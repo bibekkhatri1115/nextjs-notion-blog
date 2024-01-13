@@ -1,14 +1,16 @@
 import Keyv from '@keyvhq/core'
 import KeyvRedis from '@keyvhq/redis'
+import { kv } from "@vercel/kv";
 
 import { isRedisEnabled, redisNamespace, redisUrl } from './config'
 
-let db: Keyv
+let db = null
 if (isRedisEnabled) {
-  const keyvRedis = new KeyvRedis(redisUrl)
-  db = new Keyv({ store: keyvRedis, namespace: redisNamespace || undefined })
-} else {
-  db = new Keyv()
+    db = kv
+//   const keyvRedis = new KeyvRedis(redisUrl)
+//   db = new Keyv({ store: keyvRedis, namespace: redisNamespace || undefined })
+// } else {
+//   db = new Keyv()
 }
 
 export { db }
