@@ -1,6 +1,6 @@
 import { kv } from "@vercel/kv";
 
-import { isRedisEnabled, redisNamespace, redisUrl } from './config'
+import { isRedisEnabled } from './config'
 
 let db = null
 if (isRedisEnabled) {
